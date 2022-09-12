@@ -33,13 +33,13 @@ public class CacheConfig extends CachingConfigurerSupport {
         return cacheManager;
     }
 
-    private CaffeineCache buildCache(String cacheName, Long maxSize, Long ttl, TimeUnit ttlUnit) {
+    private CaffeineCache buildCache(String cacheName, Long maxSize, Long ttl, TimeUnit timeUnit) {
 
         var cacheBuilder = Caffeine.newBuilder();
 
         // TTL
-        if (ttl != null && ttl > 0 && ttlUnit != null) {
-            cacheBuilder.expireAfterWrite(ttl, ttlUnit);
+        if (ttl != null && ttl > 0 && timeUnit != null) {
+            cacheBuilder.expireAfterWrite(ttl, timeUnit);
         }
 
         // Max size
